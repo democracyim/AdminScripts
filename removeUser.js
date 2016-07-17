@@ -23,18 +23,14 @@ function AreYouSure(col, db) {
     prompt.get(['YesNo'], function (err, result) {
         if (err) { return onErr(err); }
         if(result.YesNo === 'y' || result.YesNo === 'yes' || result.YesNo === 'true' || result.YesNo === 'yep'){
+            var topicsCol = db.collection('topics');
             var commentsCol = db.collection('comments');
             var usersCol = db.collection('users');
             userIDs.forEach(function(userid, ind2, arr2){
 
-                usersCol.remove({"email": userid.email}, function(err, result){
-                    if(err){
-                        console.log(err);
-                    }
-                    else {
-                        console.log("Removed " + userid.email + " user");
-                    }
-                });
+                topicsCol.update({ },
+                                {$pull: {votes: { author: userids.id }}
+                                );
                 
                 commentsCol.remove({author: userid.id}, function(err, result){
                     if(err){
@@ -44,6 +40,17 @@ function AreYouSure(col, db) {
                         console.log("Removed " + userid.email + " comments");
                     }
                 });
+                
+                usersCol.remove({"email": userid.email}, function(err, result){
+                    if(err){
+                        console.log(err);
+                    }
+                    else {
+                        console.log("Removed " + userid.email + " user");
+                    }
+                });
+                
+                
                 
             });
         }
