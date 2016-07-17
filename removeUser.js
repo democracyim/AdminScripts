@@ -29,7 +29,8 @@ function AreYouSure(col, db) {
             userIDs.forEach(function(userid, ind2, arr2){
 
                 topicsCol.update({ },
-                                {$pull: {votes: { author: userids.id }}
+                                { $pull: {votes: { author: userids.id }}},
+                                { multi: true }
                                 );
                 
                 commentsCol.remove({author: userid.id}, function(err, result){
