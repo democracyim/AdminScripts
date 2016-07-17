@@ -50,7 +50,7 @@ function AreYouSure(col, db) {
         else {
             console.log("no");
         }
-        process.exit();
+//        process.exit();// This needs to be moved to only fire at the end of the process
       });
 }
 

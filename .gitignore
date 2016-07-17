@@ -6,6 +6,9 @@ npm-debug.log*
 # Config file
 config.js
 
+#Notes file
+note.txt
+
 # Runtime data
 pids
 *.pid
