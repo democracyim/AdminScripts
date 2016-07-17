@@ -3,6 +3,7 @@
     "description": "a few scripts",
     "version": "0.0.1",
     "dependencies": {
-        "mongodb": "2.2.1"
+        "mongodb": "2.2.1",
+        "prompt": "1.0.0"
     }
 }
