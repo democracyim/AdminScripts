@@ -33,6 +33,12 @@ function AreYouSure(col, db) {
                                 { multi: true }
                                 );
                 
+                topicsCol.update({ },
+                                { $pull: {participants: { _id: userid.id }}},
+                                { multi: true }
+                                );
+                
+                
                 commentsCol.remove({author: userid.id}, function(err, result){
                     if(err){
                         console.log(err);
